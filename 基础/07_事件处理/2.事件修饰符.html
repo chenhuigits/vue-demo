@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件修饰符</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top:20px
+        }
+        .demo1{
+            height: 50px;
+            background-color: antiquewhite;
+        }
+        .box1{
+            padding: 5px;
+            background-color: skyblue;
+        }
+        .box2{
+            padding: 5px;
+            background-color: orange; 
+        }
+        .demo2{
+            padding:5px;
+            background-color: black;
+        }
+        
+        .list{
+            width: 100px;
+            height: 200px;
+            background-color: peru;
+            /* 添加滚动条 */
+            overflow:auto; 
+        }
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+				Vue中的事件修饰符：
+						1.prevent：阻止默认事件（常用）；
+						2.stop：阻止事件冒泡（常用）；
+						3.once：事件只触发一次（常用）；
+						4.capture：使用事件的捕获模式；
+						5.self：只有event.target是当前操作的元素时才触发事件；
+						6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
+		-->
+
+    <div id="root">
+        <!-- 阻止默认事件（常用） -->
+        <a @click.prevent="showInfo1($event,'a')" href="http://www.atguigu.com">尚硅谷</a>
+        <!-- 阻止事件冒泡（常用） -->
+        <div class="demo1" @click="showInfo('dev')" >
+            <button @click.stop="showInfo('button')"> 点我提示信息</button>
+        </div>
+        <!-- 事件只触发一次（常用） -->
+        <button @click.once="showInfo('once')">点我提示信息</button>
+
+        <!-- 使用事件的捕获模式 -->
+        <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+        </div>
+        <!-- 当前操作的元素时才触发事件 -->
+        <div class="demo2" @click.self="showInfo('demo2')">
+            <button @click="showInfo('demo2-button')">点我提示信息</button>
+        </div>
+       
+        <!-- 事件的默认行为立即执行，无需等待事件回调执行完毕；wheel滚动鼠标滚轮；scroll鼠标下拉滚动条 -->
+        <ul class="list" @scroll="showUlInfo">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        new Vue({
+            el:"#root",
+            data:{
+
+            },
+            methods:{
+                showInfo(val){
+                    console.log(val);   
+                },
+                showInfo1(event,val){
+                    console.log('showInfo1');
+                },
+                showInfo2(){
+                    console.log('showInfo2');
+                },
+                showMsg(val){
+                    console.log(val);
+                },
+                showUlInfo(){
+                    for (let i = 0; i < 100000; i++) {
+                        console.log('#')
+                        
+                    }
+                    console.log('累坏了！');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

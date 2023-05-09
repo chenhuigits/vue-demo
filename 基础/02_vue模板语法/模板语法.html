@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>模板语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- vue插值语法 -->
+    <div id="root1">
+        <h1>尚硅谷，{{name}}</h1>
+    </div>
+    <div class="root2">
+        <h1>尚硅谷，{{Date.now()}}</h1>
+    </div>
+    
+    <!--指令语法 -->
+    <div id="root3">
+        <a v-bind:href="url">{{name}}链接</a>
+    </div>
+    <!-- v-bind:可以简写成: -->
+    <div id="root4">
+        <a :href="url">百度的链接</a>
+    </div>
+
+    <script type="text/javascript"> 
+
+        new Vue({
+            el:'#root4',
+            data:{
+                url:"https://www.baidu.com/?tn=02003390_64_hao_pg"
+            }
+
+        });
+
+
+        new Vue({
+            el:'#root1',
+            data: {
+                name:"小强123"
+            }
+        });
+        new Vue({
+            el:'.root2',
+            data: {
+                name:"小强1234"
+            }
+        });
+        new Vue({
+            el:'#root3',
+            data: {
+                url:"https://cn.vuejs.org",
+                name:"Vue官网手册"
+            }
+        });
+    </script>
+</body>
+</html>
