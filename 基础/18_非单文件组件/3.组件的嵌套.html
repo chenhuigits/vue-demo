@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件的嵌套</title>
+    <style>
+        .SchoolCss{
+            background-color: burlywood;
+        }
+    </style>
+    <!-- 引入Vue -->
+	<script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 创建一个容器 -->
+    <div id="root">
+    </div>
+
+    <script type="text/javascript">
+		Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+
+        // 创建一个学生主键
+        const Student =  Vue.extend({
+            name:'Student',
+            template:`
+                <div>
+                    <h3>学生姓名：{{name}}</h3>
+                    <h3>学生年龄：{{age}}</h3>
+                </div>
+            `,
+            data(){
+                return{
+                    name:"张三",
+                    age:18
+                }
+            }
+
+        });
+
+        // 创建一个学校主键
+        const School = Vue.extend({
+            name:'School',
+            template:`
+                <div class="SchoolCss">
+                    <h2>学校名称：{{name}}</h2>    
+                    <h2>学校地址：{{address}}</h2> 
+                    <Student></Student>
+                </div>
+            `,
+            data(){
+                return{
+                    name:"尚硅谷",
+                    address:"北京"
+                }
+            },
+            components:{
+                Student
+            }
+        });
+        // 构建一个Hello组件
+        const Hello = {
+            name:'Hello',
+            template:`
+                <h2>{{msg}}</h2>
+            `,
+            data(){
+                return{
+                    msg:"欢迎来到尚硅谷学习！"
+                }
+                
+            }
+        };
+
+        // 构架一个全局App组件
+        const App = Vue.extend({
+            name:'App',
+            template:`
+                <div>
+                    <Hello></Hello>
+                    <School></School>
+                </div>
+            `,
+            components:{
+                Hello,
+                School
+            }
+        });
+
+        new Vue({
+            el:'#root',
+            template:`
+                <App></App>
+            `,
+            data:{
+                
+            },
+            components:{
+                App
+            }
+        })
+
+    </script>
+</body>
+</html>
