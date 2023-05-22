@@ -1,18 +1,55 @@
 <template>
-	<div>
-		<h2>学生姓名：{{name}}</h2>
-		<h2>学生年龄：{{age}}</h2>
-	</div>
+    <div>
+        <h1>{{ msg }}</h1>
+        <h2>学生姓名：{{ name }}</h2>
+        <h2>学生性别：{{ sex }}</h2>
+        <h2>学生年龄：{{ myAge }}</h2>
+        <button @click="ageAdd1">点我年龄+1</button>
+    </div>
 </template>
 
 <script>
-	 export default {
-		name:'Student',
-		data(){
-			return {
-				name:'张三',
-				age:18
-			}
-		}
-	}
+    export default{
+        name:'Student',
+        data(){
+            return{
+                msg:'我是一个尚硅谷的学生',
+                myAge:this.age
+            }
+        },
+        methods:{
+            ageAdd1(){
+                return this.myAge++;
+            }
+        },
+        // 简单声明接收
+        // props:['name','age','sex']
+        
+        // 接受同事对数据类型进行限定
+        /* props:{
+            name:String,
+            age:Number,
+            sex:String
+        } */
+        // 接收的同时对数据：进行类型限制+默认值的指定+必要性的限制
+        props:{
+            name:{
+                type:String,
+                required:true
+            },
+            age:{
+                type:Number,
+                default:99
+            },
+            sex:{
+                type:String,
+                required:true
+            }
+        }
+    }
+
 </script>
+
+<style>
+
+</style>
