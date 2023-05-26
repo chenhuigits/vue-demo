@@ -33,11 +33,8 @@
     //     }
     // });
     
-    // v.$mount('#root');
-    // console.log(v);
 
     const v =  new Vue({
-        el:'#root',//第一种写法
         data(){
             console.log(this);
             return{
@@ -45,6 +42,7 @@
             }
         }
      });
+     v.$mount('#root');
 
 </script>
 

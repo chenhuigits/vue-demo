@@ -18,7 +18,9 @@
     
     <!--指令语法 -->
     <div id="root3">
-        <a v-bind:href="url">{{name}}链接</a>
+        <a v-bind:href="url">{{name}}链接</a><br/>
+        <!-- 插值语法写在href中不生效 -->
+        <a href="{{url}}">{{name}}插值语法链接</a>
     </div>
     <!-- v-bind:可以简写成: -->
     <div id="root4">

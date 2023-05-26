@@ -32,7 +32,11 @@
 		-->
     <div id="root">
         <h2>欢迎来到{{name}}学习</h2>
-        <input type="text" placeholder="按下回车提示输入" @keyup.left="showInfo">
+        <input type="text" placeholder="按下回车提示输入" @keyup.left="showInfo"><br/>
+        <!-- 回车键为13 -->
+        <input type="text" placeholder="按下回车提示输入" @keyup.13="showInfo"><br/>
+        <!-- 按任意键输出键属性 -->
+        <input type="text" placeholder="按下回车提示输入" @keyup="showInfo">
     </div>
         
     <script type="text/javascript">
