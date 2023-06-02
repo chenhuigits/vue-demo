@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,8 @@
 </head>
 <body>
     <div>
-        <h1>hello 尚硅谷！</h1>
+        <h1>hello 尚硅谷！</h1><br/>
+        <input type="date" th:value="2023-05-01" >
     </div>
     <script type="text/javascript">
         Vue.config.productionTip = false ;
